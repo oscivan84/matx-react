@@ -14,7 +14,7 @@ const StatCards2 = () => {
                             <Icon className="text-green">trending_up</Icon>
                         </Fab>
                         <h5 className="font-medium text-green m-0 ml-3">
-                            Active Users
+                            Usuarios Activos
                         </h5>
                     </div>
                     <div className="pt-4 flex items-center">
@@ -36,7 +36,7 @@ const StatCards2 = () => {
                             <Icon className="text-error">star_outline</Icon>
                         </Fab>
                         <h5 className="font-medium text-error m-0 ml-3">
-                            Transactions
+                            Transaciones
                         </h5>
                     </div>
                     <div className="pt-4 flex items-center">

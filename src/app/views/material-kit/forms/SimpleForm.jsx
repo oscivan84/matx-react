@@ -83,7 +83,7 @@ const SimpleForm = () => {
                         />
                         <TextValidator
                             className="mb-4 w-full"
-                            label="First Name"
+                            label="First n,mnName"
                             onChange={handleChange}
                             type="text"
                             name="firstName"
@@ -205,7 +205,7 @@ const SimpleForm = () => {
                 </Grid>
                 <Button color="primary" variant="contained" type="submit">
                     <Icon>send</Icon>
-                    <span className="pl-2 capitalize">Submit</span>
+                    <span className="pl-2 capitalize">Sukjhbmit</span>
                 </Button>
             </ValidatorForm>
         </div>
