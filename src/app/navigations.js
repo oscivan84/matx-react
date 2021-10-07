@@ -2,12 +2,12 @@ import { authRoles } from './auth/authRoles'
 
 export const navigations = [
     {
-        name: 'Dashboard',
+        name: 'AutoGestion',
         path: '/dashboard',
         icon: 'dashboard',
     },
     {
-        label: 'Pages',
+        label: 'Paginas',
         type: 'label',
     },
     {
@@ -38,14 +38,19 @@ export const navigations = [
     },
     
     {
-        label: 'Components',
+        label: 'Componentes',
         type: 'label',
     },
     {
-        name: 'Components',
+        name: 'Componentes',
         icon: 'favorite',
         badge: { value: '30+', color: 'secondary' },
         children: [
+            {
+                name: 'Registro Cliente',
+                path: '/forms/registrocliente',
+                iconText: 'A',
+            },
             {
                 name: 'Auto Complete',
                 path: '/material/autocomplete',

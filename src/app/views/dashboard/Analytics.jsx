@@ -25,15 +25,15 @@ const Analytics = () => {
                         <StatCards2 />
 
                         <h4 className="card-title text-muted mb-4">
-                            Ongoing Projects
+                            Proyectos en Marcha
                         </h4>
                         <RowCards />
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>
                         <Card className="px-6 py-4 mb-6">
-                            <div className="card-title">Traffic Sources</div>
-                            <div className="card-subtitle">Last 30 days</div>
+                            <div className="card-title">Promedio Ventas</div>
+                            <div className="card-subtitle">Ultimos 30 dias</div>
                             <DoughnutChart
                                 height="300px"
                                 color={[

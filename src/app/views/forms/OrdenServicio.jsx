@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Breadcrumb } from 'app/components'
-import SimpleForm from '../material-kit/forms/SimpleForm'
+import OrdenServicios from '../material-kit/forms/OrdenServicio'
 import { Card } from '@material-ui/core'
 
-class BasicForm extends Component {
+class OrdenServicio extends Component {
     render() {
         return (
             <div className="m-sm-30">
@@ -11,18 +11,16 @@ class BasicForm extends Component {
                     <Breadcrumb
                         routeSegments={[
                             { name: 'Forms', path: '/forms' },
-                            { name: 'Basic' },
+                            { name: 'OrdenServicio' },
                         ]}
                     />
                 </div>
                 <Card className="px-6 pt-2 pb-4">
-                    <SimpleForm />
+                    <OrdenServicios />
                 </Card>
-               
-
             </div>
         )
     }
 }
 
-export default BasicForm
+export default OrdenServicio

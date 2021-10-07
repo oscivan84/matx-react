@@ -45,7 +45,7 @@ const StatCards = () => {
                         <Icon className={classes.icon}>attach_money</Icon>
                         <div className="ml-3">
                             <small className="text-muted line-height-1">
-                                This week Sales
+                                Esta Semana
                             </small>
                             <h6 className="m-0 mt-1 text-primary font-medium">
                                 $80,500
@@ -68,10 +68,10 @@ const StatCards = () => {
                         <Icon className={classes.icon}>store</Icon>
                         <div className="ml-3">
                             <small className="text-muted">
-                                Inventory Status
+                                Inventario
                             </small>
                             <h6 className="m-0 mt-1 text-primary font-medium">
-                                8.5% Stock Surplus
+                                8.5% Stock
                             </h6>
                         </div>
                     </div>
@@ -91,10 +91,10 @@ const StatCards = () => {
                         <Icon className={classes.icon}>shopping_cart</Icon>
                         <div className="ml-3">
                             <small className="text-muted">
-                                Orders to deliver
+                                Orderdenes de servicio
                             </small>
                             <h6 className="m-0 mt-1 text-primary font-medium">
-                                305 Orders
+                                305 Ordenes
                             </h6>
                         </div>
                     </div>

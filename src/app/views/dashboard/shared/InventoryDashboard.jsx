@@ -10,19 +10,21 @@ const InventoryDashboard = () => {
         <Fragment>
             <Grid container spacing={3}>
                 <Grid item sm={8} xs={12}>
-                    <h5 className="mt-0 mb-4 text-muted">Sales Activity</h5>
+                    <h5 className="mt-0 mb-4 text-muted">Actividad de ventas</h5>
                     <StatCard5 />
                 </Grid>
                 <Grid item sm={4} xs={12}>
                     <div className="flex-column h-full">
                         <h5 className="mt-0 mb-4 text-muted">
-                            Inventory Summary
+                        Resumen de inventario
                         </h5>
                         <Card
                             className="p-5 flex justify-between items-center mb-4 h-full"
                             elevation={3}
                         >
-                            <span>QUANTITY IN HAND</span>
+                            <span>
+                            CANTIDAD EN BODEGAS
+                            </span>
                             <h5 className="m-0">540</h5>
                         </Card>
 
@@ -30,7 +32,9 @@ const InventoryDashboard = () => {
                             className="p-5 flex justify-between items-center h-full"
                             elevation={3}
                         >
-                            <span>QUANTITY TO BE RECEIVED</span>
+                            <span>
+                            CANTIDAD A RECIBIR
+                            </span>
                             <h5 className="m-0">120</h5>
                         </Card>
                     </div>
@@ -42,19 +46,19 @@ const InventoryDashboard = () => {
                             <Grid item sm={7} xs={12}>
                                 <div className="flex justify-between items-center py-3">
                                     <h5 className="font-normal text-error">
-                                        Stockout Items
+                                    Artículos agotados  
                                     </h5>
                                     <h5 className="text-error">234</h5>
                                 </div>
                                 <div className="flex justify-between items-center py-3">
                                     <h5 className="font-normal">
-                                        Low Stock Items
+                                    Artículos con pocas existencias
                                     </h5>
                                     <h5>123</h5>
                                 </div>
                                 <div className="flex justify-between items-center py-3">
                                     <h5 className="font-normal">
-                                        Available Items
+                                    Articulos disponibles
                                     </h5>
                                     <h5>3432</h5>
                                 </div>
@@ -67,7 +71,9 @@ const InventoryDashboard = () => {
                         <Divider className="mt-6" />
 
                         <div className="flex justify-between items-center p-4">
-                            <h5 className="m-0">Purchase Order</h5>
+                            <h5 className="m-0">
+                            Orden de compra
+                            </h5>
                             <Select
                                 size="small"
                                 defaultValue="this_year"

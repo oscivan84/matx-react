@@ -205,7 +205,7 @@ const SimpleForm = () => {
                 </Grid>
                 <Button color="primary" variant="contained" type="submit">
                     <Icon>send</Icon>
-                    <span className="pl-2 capitalize">Sukjhbmit</span>
+                    <span className="pl-2 capitalize">Enviar</span>
                 </Button>
             </ValidatorForm>
         </div>

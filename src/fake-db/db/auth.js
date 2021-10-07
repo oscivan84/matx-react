@@ -29,7 +29,7 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
         const user = userList.find((u) => u.email === email)
 
         if (!user) {
-            return [400, { message: 'Invalid email or password' }]
+            return [400, { message: 'email o password incorrectos' }]
         }
         const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, {
             expiresIn: JWT_VALIDITY,
@@ -50,7 +50,7 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
         ]
     } catch (err) {
         console.error(err)
-        return [500, { message: 'Internal server error' }]
+        return [500, { message: 'Error Interno Servidor' }]
     }
 })
 
@@ -60,7 +60,7 @@ Mock.onPost('/api/auth/register').reply((config) => {
         const user = userList.find((u) => u.email === email)
 
         if (user) {
-            return [400, { message: 'User already exists!' }]
+            return [400, { message: 'Usuario existente!' }]
         }
         const newUser = {
             id: 2,
@@ -93,7 +93,7 @@ Mock.onPost('/api/auth/register').reply((config) => {
         ]
     } catch (err) {
         console.error(err)
-        return [500, { message: 'Internal server error' }]
+        return [500, { message: 'Error interno de servidor ' }]
     }
 })
 
@@ -102,7 +102,7 @@ Mock.onGet('/api/auth/profile').reply((config) => {
         const { Authorization } = config.headers
         console.log(config.headers)
         if (!Authorization) {
-            return [401, { message: 'Invalid Authorization token' }]
+            return [401, { message: 'Token de autorización no válido' }]
         }
 
         const accessToken = Authorization.split(' ')[1]
@@ -110,7 +110,7 @@ Mock.onGet('/api/auth/profile').reply((config) => {
         const user = userList.find((u) => u.id === userId)
 
         if (!user) {
-            return [401, { message: 'Invalid authorization token' }]
+            return [401, { message: 'Token de autorización no válido' }]
         }
 
         return [
