@@ -13,7 +13,10 @@ const Invoice2 = () => {
                     </h3>
                     <div className="flex">
                         <div className="px-3 text-11 py-3px border-radius-4 text-white bg-green mr-3">
-                            Caja
+                            Orden
+                        </div>
+                        <div className="px-3 text-11 py-3px border-radius-4 text-white bg-green mr-3">
+                            Registro
                         </div>
                      </div>
                 </div>
