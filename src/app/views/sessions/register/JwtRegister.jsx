@@ -75,7 +75,7 @@ const JwtRegister = () => {
                                     label="Username"
                                     onChange={handleChange}
                                     type="text"
-                                    name="username"
+                                    name="Usuario"
                                     value={username || ''}
                                     validators={['required']}
                                     errorMessages={['this field is required']}
@@ -84,7 +84,7 @@ const JwtRegister = () => {
                                     className="mb-6 w-full"
                                     variant="outlined"
                                     size="small"
-                                    label="Email"
+                                    label="Correo"
                                     onChange={handleChange}
                                     type="email"
                                     name="email"
@@ -97,7 +97,7 @@ const JwtRegister = () => {
                                 />
                                 <TextValidator
                                     className="mb-4 w-full"
-                                    label="Password"
+                                    label="Contraseña"
                                     variant="outlined"
                                     size="small"
                                     onChange={handleChange}
@@ -124,7 +124,7 @@ const JwtRegister = () => {
                                             checked={agreement || false}
                                         />
                                     }
-                                    label="I have read and agree to the terms of service."
+                                    label="He leído y acepto los términos de servicio."
                                 />
                                 <div className="flex items-center">
                                     <Button
@@ -133,12 +133,12 @@ const JwtRegister = () => {
                                         color="primary"
                                         type="submit"
                                     >
-                                        Sign up
+                                        Entrat
                                     </Button>
-                                    <span className="mx-2 ml-5">or</span>
+                                    <span className="mx-2 ml-5">o</span>
                                     <Link to="/session/signin">
                                         <Button className="capitalize">
-                                            Sign in
+                                            Salir
                                         </Button>
                                     </Link>
                                 </div>

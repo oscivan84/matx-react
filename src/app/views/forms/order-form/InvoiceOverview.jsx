@@ -14,9 +14,9 @@ const InvoiceOverview = () => {
     return (
         <Card className="p-4">
             <div className="mb-4 flex justify-between items-center">
-                <h4 className="m-0 font-medium">Overview</h4>
+                <h4 className="m-0 font-medium">Registro Orden</h4>
                 <div className="text-muted text-13 font-medium">
-                    {format(new Date(), 'MMM dd, yyyy')} at{' '}
+                    {format(new Date(), 'MMM dd, yyyy')}{' '}
                     {format(new Date(), 'HH:mm:aa')}
                 </div>
             </div>
@@ -38,7 +38,7 @@ const InvoiceOverview = () => {
                     }}
                 />
                 <Button className="ml-3 px-7 font-medium text-primary bg-light-primary whitespace-pre">
-                    Browse Catalog
+                    Agregar
                 </Button>
             </div>
 
@@ -48,7 +48,7 @@ const InvoiceOverview = () => {
                         <Grid container>
                             <Grid item lg={6} md={6} sm={6} xs={6}>
                                 <h6 className="m-0 font-medium">
-                                    Product Details
+                                    Detalle de Product
                                 </h6>
                             </Grid>
                             <Grid
@@ -59,7 +59,7 @@ const InvoiceOverview = () => {
                                 xs={2}
                                 className="text-center"
                             >
-                                <h6 className="m-0 font-medium">Price</h6>
+                                <h6 className="m-0 font-medium">Precio</h6>
                             </Grid>
                             <Grid
                                 item
@@ -69,7 +69,7 @@ const InvoiceOverview = () => {
                                 xs={2}
                                 className="text-center"
                             >
-                                <h6 className="m-0 font-medium">Quantity</h6>
+                                <h6 className="m-0 font-medium">Cantidad</h6>
                             </Grid>
                             <Grid
                                 item
@@ -91,39 +91,10 @@ const InvoiceOverview = () => {
                             <Grid container alignItems="center">
                                 <Grid item lg={6} md={6} sm={6} xs={6}>
                                     <div className="flex">
-                                        <img
-                                            className="border-radius-4 w-100 mr-3"
-                                            src={product.imgUrl}
-                                            alt={product.title}
-                                        />
                                         <div className="flex-grow">
                                             <h6 className="mt-0 mb-3 text-15 text-primary">
                                                 {product.title}
                                             </h6>
-                                            <p className="mt-0 mb-6px text-13">
-                                                <span className="text-muted">
-                                                    category:{' '}
-                                                </span>
-                                                <span className="font-medium">
-                                                    {product.item}
-                                                </span>
-                                            </p>
-                                            <p className="mt-0 mb-6px text-13">
-                                                <span className="text-muted">
-                                                    brand:{' '}
-                                                </span>
-                                                <span className="font-medium">
-                                                    {product.brand}
-                                                </span>
-                                            </p>
-                                            <p className="mt-0 mb-6px text-13">
-                                                <span className="text-muted">
-                                                    category:{' '}
-                                                </span>
-                                                <span className="font-medium">
-                                                    {product.category}
-                                                </span>
-                                            </p>
                                         </div>
                                     </div>
                                 </Grid>
@@ -135,18 +106,7 @@ const InvoiceOverview = () => {
                                     xs={2}
                                     className="text-center"
                                 >
-                                    <TextField
-                                        variant="outlined"
-                                        name="amount"
-                                        type="number"
-                                        size="small"
-                                        defaultValue={product.price}
-                                        inputProps={{
-                                            style: {
-                                                width: '60px',
-                                            },
-                                        }}
-                                    />
+                                    <h6>{product.price}</h6>
                                 </Grid>
                                 <Grid
                                     item
@@ -196,50 +156,30 @@ const InvoiceOverview = () => {
 
             <Grid container spacing={3}>
                 <Grid item md={7} xs={12}>
-                    <h5 className="mt-0 mb-6">Notes</h5>
+                    <h5 className="mt-0 mb-6">Notas</h5>
                     <TextField
                         placeholder="Write a note"
                         variant="outlined"
                         multiline
-                        rows={6}
+                        rows={3}
                         fullWidth
                     />
+                </Grid>
+                <Grid item md={5} xs={12}>
+                    <h5 className="mt-0 mb-6">Detalles de Pago</h5>
+                    <div className="flex justify-between mb-3">
+                        <span className="text-muted">Total:</span>
+                        <span className="font-medium">$568</span>
+                    </div>
+
                     <div className="mt-4 flex justify-end">
                         <Button
                             variant="contained"
                             color="primary"
                             size="small"
                         >
-                            Add a note
+                            Terminar
                         </Button>
-                    </div>
-                </Grid>
-                <Grid item md={5} xs={12}>
-                    <h5 className="mt-0 mb-6">Bill Details</h5>
-                    <div className="flex justify-between mb-3">
-                        <span className="text-muted">Subtotal:</span>
-                        <span className="font-medium">$568</span>
-                    </div>
-
-                    <p className="text-primary text-13 font-medium mt-0 mb-1">
-                        Shipping
-                    </p>
-                    <div className="flex justify-between mb-3">
-                        <div>
-                            <p className="m-0">DHL</p>
-                            <small className="text-muted">
-                                Deliver in 1-3 days
-                            </small>
-                        </div>
-                        <span className="font-medium">$15.00</span>
-                    </div>
-
-                    <p className="text-primary text-13 font-medium mt-0 mb-1">
-                        Taxes
-                    </p>
-                    <div className="flex justify-between mb-2">
-                        <p className="m-0">GST 5%</p>
-                        <span className="font-medium">$150.00</span>
                     </div>
                 </Grid>
             </Grid>
@@ -253,7 +193,7 @@ const dummyProductList = [
         imgUrl: '/assets/images/products/speaker-1.jpg',
         price: 324.0,
         amount: 10,
-        title: 'Bass Speaker Black',
+        title: 'Producto #1',
         category: 'audio',
         brand: 'Microlab',
         item: '2019 6582 2365',
@@ -263,7 +203,7 @@ const dummyProductList = [
         imgUrl: '/assets/images/products/speaker-2.jpg',
         price: 454.0,
         amount: 15,
-        title: 'Bass Speaker',
+        title: 'Producto #2',
         category: 'audio',
         brand: 'Microlab',
         item: '2019 6582 2365',

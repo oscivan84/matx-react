@@ -18,9 +18,9 @@ const InvoiceCustomer = () => {
     return (
         <Card className="p-4">
             <div className="mb-4 flex justify-between items-center">
-                <h4 className="m-0 font-medium">Customer</h4>
+                <h4 className="m-0 font-medium">Cliente</h4>
                 <Link className="text-primary" to="/">
-                    View Details
+                    Ver Detalles
                 </Link>
             </div>
 
@@ -29,29 +29,26 @@ const InvoiceCustomer = () => {
             <div className="flex-column justify-center items-center mb-6">
                 <Avatar
                     className={clsx('w-100 h-100 mb-6', classes.avatar)}
-                    src="/assets/images/faces/5.jpg"
+                    src="/assets/images/faces/4.jpg"
                 />
-                <h5>Devid Templehov</h5>
+                <h5>Martha Leal</h5>
                 <p className="text-primary mt-0 mb-2">
-                    davidtempletone@gmail.com
+                    correoMartha@gmail.com
                 </p>
-                <p className="mt-0">+21 (050) 071-91-58</p>
+                <p className="mt-0">310 2885964</p>
                 <Rating readOnly={true} value={4} />
+                <p className="mt-0">Pension</p>
             </div>
 
             <Divider className="mb-6" />
 
             <div className="mb-6">
-                <p className="font-medium mb-3">Shipping Address</p>
-                <p className="mt-0 mb-1">39, Hilbert Store</p>
-                <p className="m-0">New York, NY, United States</p>
+                <p className="font-medium mb-3">Direccion</p>
+                <p className="mt-0 mb-1">Calle 34 #23-55 Barrio</p>
+                
             </div>
 
-            <div>
-                <p className="font-medium mb-3">Billing Address</p>
-                <p className="mt-0 mb-1">39, Hilbert Store</p>
-                <p className="m-0">New York, NY, United States</p>
-            </div>
+           
         </Card>
     )
 }

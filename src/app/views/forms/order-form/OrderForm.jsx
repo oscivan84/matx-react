@@ -9,16 +9,13 @@ const Invoice2 = () => {
             <div className="flex flex-wrap justify-between mb-6">
                 <div>
                     <h3 className="mt-0 mb-4 font-medium text-28">
-                        Order #1028
+                        Orden #1028
                     </h3>
                     <div className="flex">
                         <div className="px-3 text-11 py-3px border-radius-4 text-white bg-green mr-3">
-                            Paid
+                            Caja
                         </div>
-                        <div className="px-3 text-11 py-3px border-radius-4 text-white bg-secondary">
-                            Unfulfilled
-                        </div>
-                    </div>
+                     </div>
                 </div>
 
                 <div className="">
@@ -26,7 +23,7 @@ const Invoice2 = () => {
                         <Icon>more_horiz</Icon>
                     </IconButton>
                     <Button variant="contained" color="primary">
-                        Fulfill Order
+                        Lista de Ordenes
                     </Button>
                 </div>
             </div>

@@ -75,12 +75,12 @@ const ForgotPassword = () => {
                                         color="primary"
                                         type="submit"
                                     >
-                                        Reset Password
+                                        Limpiar Contraseña
                                     </Button>
-                                    <span className="ml-4 mr-2">or</span>
+                                    <span className="ml-4 mr-2">o</span>
                                     <Link to="/session/signin">
                                         <Button className="capitalize">
-                                            Sign in
+                                            Entrar
                                         </Button>
                                     </Link>
                                 </div>

@@ -13,7 +13,7 @@ const UpgradeCard = () => {
                     alt="upgrade"
                 />
                 <p className="text-muted m-0 py-6">
-                    Upgrade to <b>MatX PRO</b> for <br /> more resources
+                    (texto)
                 </p>
                 <Button
                     className="uppercase"
@@ -21,7 +21,7 @@ const UpgradeCard = () => {
                     variant="contained"
                     color="primary"
                 >
-                    upgrade now
+                    TEXTO
                 </Button>
             </Card>
         </Card>

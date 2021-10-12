@@ -18,12 +18,12 @@ const formsRoutes = [
         component: React.lazy(() => import('./EditorForm')),
     },
     {
-        path: '/forms/upload',
-        component: React.lazy(() => import('./UploadForm')),
-    }
+        path: '/forms/ruta',
+        component: React.lazy(() => import('./order-form/InvoiceOverview')),
+    },
     {
         path: '/forms/orderform',
-        component: React.lazy(() => import('./orderform')),
+        component: React.lazy(() => import('./order-form/OrderForm')),
     }
 ]
 

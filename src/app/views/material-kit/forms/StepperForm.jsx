@@ -61,7 +61,7 @@ export default function StepperForm() {
                             color="secondary"
                             onClick={handleReset}
                         >
-                            Reset
+                            Limpiar
                         </Button>
                     </div>
                 ) : (
@@ -74,7 +74,7 @@ export default function StepperForm() {
                                 disabled={activeStep === 0}
                                 onClick={handleBack}
                             >
-                                Back
+                                Regresar
                             </Button>
                             <Button
                                 className="ml-4"

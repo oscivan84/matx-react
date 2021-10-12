@@ -4,8 +4,8 @@ import { SimpleCard, MatxProgressBar } from 'app/components'
 const Campaigns = () => {
     return (
         <div>
-            <SimpleCard title="Campaigns">
-                <small className="text-muted">Today</small>
+            <SimpleCard title="Campañas">
+                <small className="text-muted">Hoy</small>
                 <div className="pt-2" />
                 <MatxProgressBar
                     value={75}
@@ -26,7 +26,7 @@ const Campaigns = () => {
                 />
 
                 <div className="py-3" />
-                <small className="text-muted">Yesterday</small>
+                <small className="text-muted">Mañana</small>
                 <div className="pt-2" />
                 <MatxProgressBar
                     value={75}
@@ -47,7 +47,7 @@ const Campaigns = () => {
                 />
 
                 <div className="py-3" />
-                <small className="text-muted">Yesterday</small>
+                <small className="text-muted">Ayer</small>
                 <div className="pt-2" />
                 <MatxProgressBar
                     value={75}

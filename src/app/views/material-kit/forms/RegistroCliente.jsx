@@ -9,6 +9,7 @@ import {
     FormControlLabel,
     Checkbox,
     TextField,
+    MenuItem,
 } from '@material-ui/core'
 import {
     MuiPickersUtilsProvider,
@@ -62,64 +63,76 @@ const RegistroCliente = () => {
         date,
         email,
     } = state
+    const currencies = [
+        {
+            value: 'TI',
+            label: 'TI',
+        },
+        {
+            value: 'CC',
+            label: 'CC',
+        },
+        {
+            value: 'Otro',
+            label: 'Otro',
+        },
+    ]
 
     return (
         <div>
             <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
-                <Grid container spacing={6}>
+                <Grid container spacing={2}>
                     <Grid item lg={6} md={6} sm={6} xs={6}>
-                        <TextValidator
+                        <TextField
                             className="mb-4 w-full"
+                            variant="outlined"
+                            name="nombre"
                             label="Nombre"
-                            onChange={handleChange}
-                            type="text"
-                            name="firstName"
-                            value={firstName || ''}
-                            validators={['required']}
-                            errorMessages={['Campo Requerido']}
+                            size="normal"
                         />
 
-                        <TextValidator
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <KeyboardDatePicker
+                                className="mb-4 w-full"
+                                margin="none"
+                                id="mui-pickers-date"
+                                label="Fecha Nacimiento"
+                                inputVariant="standard"
+                                type="text"
+                                autoOk={true}
+                                value={date}
+                                onChange={handleDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
+
+                        <TextField
                             className="mb-4 w-full"
+                            select
                             label="Documento Identidad"
+                            value="Seleccione"
                             onChange={handleChange}
-                            type="text"
-                            name="email"
-                            value={email || ''}
-                            validators={['required', 'isEmail']}
-                            errorMessages={[
-                                'Campo Requerido',
-                                'email is not valid',
-                            ]}
+                        >
+                            {currencies.map((option) => (
+                                <MenuItem
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+
+                        <TextField
+                            className="mb-4 w-full"
+                            variant="outlined"
+                            name="LugarNacimiento"
+                            label="Lugar Nacimiento"
+                            size="normal"
                         />
 
-                        <TextValidator
-                            className="mb-8 w-full"
-                            label="Lugar Nacimiento"
-                            onChange={handleChange}
-                            type="number"
-                            name="creditCard"
-                            value={creditCard || ''}
-                            validators={[
-                                'required',
-                                'minStringLength:16',
-                                'maxStringLength: 16',
-                            ]}
-                            errorMessages={['Campo Requerido']}
-                        />
-                        <TextValidator
-                            className="mb-4 w-full"
-                            label="Direccion Residencia"
-                            onChange={handleChange}
-                            name="confirmPassword"
-                            type="firstName"
-                            value={confirmPassword || ''}
-                            validators={['isPasswordMatch']}
-                            errorMessages={[
-                                'Campo Requerido',
-                                'password no concuerda',
-                            ]}
-                        />
                         <TextValidator
                             className="mb-4 w-full"
                             label="Telefono Fijo"
@@ -146,7 +159,7 @@ const RegistroCliente = () => {
                                 'password no concuerda',
                             ]}
                         />
-                         <TextValidator
+                        <TextValidator
                             className="mb-4 w-full"
                             label="Estado Civil"
                             onChange={handleChange}
@@ -156,10 +169,10 @@ const RegistroCliente = () => {
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
-                                "password no concuerda",
+                                'password no concuerda',
                             ]}
                         />
-                         <TextValidator
+                        <TextValidator
                             className="mb-4 w-full"
                             label="EPS"
                             onChange={handleChange}
@@ -169,58 +182,41 @@ const RegistroCliente = () => {
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
-                                "password no concuerda",
+                                'password no concuerda',
                             ]}
                         />
                     </Grid>
 
-                    <Grid item lg={6} md={6} sm={12} xs={12}>
-                        <TextValidator
+                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                        <TextField
                             className="mb-4 w-full"
-                            label="Apellido"
-                            onChange={handleChange}
-                            type="text"
-                            name="username"
-                            value={username || ''}
-                            validators={[
-                                'required',
-                                'minStringLength: 4',
-                                'maxStringLength: 9',
-                            ]}
-                            errorMessages={['Campo Requerido']}
+                            variant="outlined"
+                            name="Apellido"
+                            label="Apellidos"
+                            size="normal"
                         />
 
-                        <TextValidator
+                        <TextField
                             className="mb-4 w-full"
-                            label="Fecha Nacimiento"
-                            onChange={handleChange}
-                            type="text"
-                            name="mobile"
-                            value={mobile || ''}
-                            validators={['required']}
-                            errorMessages={['Campo Requerido']}
+                            variant="outlined"
+                            name="Edad"
+                            label="Edad"
+                            size="normal"
                         />
-                        <TextValidator
+
+                        <TextField
                             className="mb-4 w-full"
-                            label="Nacionalidad"
-                            onChange={handleChange}
-                            name="password"
-                            type="firstName"
-                            value={password || ''}
-                            errorMessages={['Campo Requerido']}
+                            variant="outlined"
+                            name="DocumentoIdentidad"
+                            label="No. Documento"
+                            size="normal"
                         />
-                        <TextValidator
+                        <TextField
                             className="mb-4 w-full"
-                            label="Barrio"
-                            onChange={handleChange}
-                            name="confirmPassword"
-                            type="firstName"
-                            value={confirmPassword || ''}
-                            validators={['isPasswordMatch']}
-                            errorMessages={[
-                                'Campo Requerido',
-                                'password no concuerda',
-                            ]}
+                            variant="outlined"
+                            name="DocumentoIdentidad"
+                            label="No. Documento"
+                            size="normal"
                         />
                         <TextValidator
                             className="mb-4 w-full"
@@ -248,7 +244,7 @@ const RegistroCliente = () => {
                                 'password no concuerda',
                             ]}
                         />
-                         <TextValidator
+                        <TextValidator
                             className="mb-4 w-full"
                             label="Con quien Vive"
                             onChange={handleChange}
@@ -258,10 +254,10 @@ const RegistroCliente = () => {
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
-                                "password no concuerda",
+                                'password no concuerda',
                             ]}
                         />
-                         <TextValidator
+                        <TextValidator
                             className="mb-4 w-full"
                             label="Tipo Afiliado"
                             onChange={handleChange}
@@ -271,15 +267,14 @@ const RegistroCliente = () => {
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
-                                "password no concuerda",
+                                'password no concuerda',
                             ]}
                         />
                         <TextField
-                        
-                        label="Observaciones Generales"
-                        variant="outlined"
-                        fullWidth
-                    />
+                            label="Observaciones Generales"
+                            variant="outlined"
+                            fullWidth
+                        />
                         <FormControlLabel
                             control={<Checkbox />}
                             label="Deseo Recibir informacion mediante correo"

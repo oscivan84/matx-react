@@ -103,16 +103,16 @@ const TopSellingTable = () => {
                                     {product.available ? (
                                         product.available < 20 ? (
                                             <small className="border-radius-4 bg-secondary text-white px-2 py-2px">
-                                                {product.available} available
+                                                {product.available} disponible
                                             </small>
                                         ) : (
                                             <small className="border-radius-4 bg-primary text-white px-2 py-2px">
-                                                in stock
+                                               Disponibles
                                             </small>
                                         )
                                     ) : (
                                         <small className="border-radius-4 bg-error text-white px-2 py-2px">
-                                            out of stock
+                                            No diponible
                                         </small>
                                     )}
                                 </TableCell>
@@ -133,32 +133,32 @@ const TopSellingTable = () => {
 const productList = [
     {
         imgUrl: '/assets/images/products/headphone-2.jpg',
-        name: 'earphone',
-        price: 100,
+        name: 'Esmalte #5',
+        price: 12450,
         available: 15,
     },
     {
         imgUrl: '/assets/images/products/headphone-3.jpg',
-        name: 'earphone',
-        price: 1500,
+        name: 'Esmalte #12',
+        price: 15250,
         available: 30,
     },
     {
         imgUrl: '/assets/images/products/iphone-2.jpg',
-        name: 'iPhone x',
-        price: 1900,
+        name: 'Articulo',
+        price: 19000,
         available: 35,
     },
     {
         imgUrl: '/assets/images/products/iphone-1.jpg',
-        name: 'iPhone x',
-        price: 100,
+        name: 'Pincel',
+        price: 10550,
         available: 0,
     },
     {
         imgUrl: '/assets/images/products/headphone-3.jpg',
-        name: 'Head phone',
-        price: 1190,
+        name: 'Esmalte #78',
+        price: 119000,
         available: 5,
     },
 ]

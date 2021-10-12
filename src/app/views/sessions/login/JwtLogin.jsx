@@ -86,7 +86,7 @@ const JwtLogin = () => {
                                     className="mb-6 w-full"
                                     variant="outlined"
                                     size="small"
-                                    label="Email"
+                                    label="Usuario"
                                     onChange={handleChange}
                                     type="email"
                                     name="email"
@@ -99,7 +99,7 @@ const JwtLogin = () => {
                                 />
                                 <TextValidator
                                     className="mb-3 w-full"
-                                    label="Password"
+                                    label="Contraseña"
                                     variant="outlined"
                                     size="small"
                                     onChange={handleChange}
@@ -109,28 +109,7 @@ const JwtLogin = () => {
                                     validators={['required']}
                                     errorMessages={['this field is required']}
                                 />
-                                <FormControlLabel
-                                    className="mb-3 min-w-288"
-                                    name="agreement"
-                                    onChange={handleChange}
-                                    control={
-                                        <Checkbox
-                                            size="small"
-                                            onChange={({
-                                                target: { checked },
-                                            }) =>
-                                                handleChange({
-                                                    target: {
-                                                        name: 'agreement',
-                                                        value: checked,
-                                                    },
-                                                })
-                                            }
-                                            checked={userInfo.agreement || true}
-                                        />
-                                    }
-                                    label="Remeber me"
-                                />
+                              
 
                                 {message && (
                                     <p className="text-error">{message}</p>
@@ -144,7 +123,7 @@ const JwtLogin = () => {
                                             disabled={loading}
                                             type="submit"
                                         >
-                                            Sign in
+                                            Entrar
                                         </Button>
                                         {loading && (
                                             <CircularProgress
@@ -155,14 +134,14 @@ const JwtLogin = () => {
                                             />
                                         )}
                                     </div>
-                                    <span className="mr-2 ml-5">or</span>
+                                    <span className="mr-2 ml-5">o</span>
                                     <Button
                                         className="capitalize"
                                         onClick={() =>
                                             history.push('/session/signup')
                                         }
                                     >
-                                        Sign up
+                                        Registrarse
                                     </Button>
                                 </div>
                                 <Button
@@ -171,7 +150,7 @@ const JwtLogin = () => {
                                         history.push('/session/forgot-password')
                                     }
                                 >
-                                    Forgot password?
+                                    Olvido la Contraseña?
                                 </Button>
                             </ValidatorForm>
                         </div>

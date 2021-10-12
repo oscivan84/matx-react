@@ -55,11 +55,7 @@ const MatxLogo = ({ className }) => {
                             fill={theme.palette.primary.light}
                             points="13 238.415212 13 0 249.898437 238.415212"
                         ></polygon>
-                        <polygon
-                            id="Path-4"
-                            fill={theme.palette.primary.main}
-                            points="252.486992 0 252.486992 238.799226 13 238.799226"
-                        ></polygon>
+                        
                     </g>
                 </g>
             </g>
