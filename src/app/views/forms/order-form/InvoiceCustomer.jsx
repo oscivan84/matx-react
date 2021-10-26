@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Rating } from '@material-ui/lab'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
+import { Autocomplete, createFilterOptions } from '@material-ui/lab'
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
     avatar: {
@@ -18,7 +19,11 @@ const InvoiceCustomer = () => {
     return (
         <Card className="p-4">
             <div className="mb-4 flex justify-between items-center">
-                <h4 className="m-0 font-medium">Cliente</h4>
+                <h4 className="m-0 font-medium">Buscar Cliente</h4>
+                
+                
+
+
                 <Link className="text-primary" to="/">
                     Ver Detalles
                 </Link>

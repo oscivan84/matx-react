@@ -12,12 +12,15 @@ const Invoice2 = () => {
                         Orden #1028
                     </h3>
                     <div className="flex">
+                        
+                    
                         <div className="px-3 text-11 py-3px border-radius-4 text-white bg-green mr-3">
-                            Orden
+                            Ordenes
                         </div>
-                        <div className="px-3 text-11 py-3px border-radius-4 text-white bg-green mr-3">
+                        <div className="px-3 text-11 py-3px border-radius-4 text-white bg-secondary">
                             Registro
                         </div>
+
                      </div>
                 </div>
 

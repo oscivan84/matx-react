@@ -19,7 +19,7 @@ const formsRoutes = [
     },
     {
         path: '/forms/ruta',
-        component: React.lazy(() => import('./order-form/InvoiceOverview')),
+        component: React.lazy(() => import('./HorizontalStepper')),
     },
     {
         path: '/forms/orderform',
