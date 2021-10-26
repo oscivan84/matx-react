@@ -19,7 +19,7 @@ const AppEchart = () => {
                 />
             </div>
             
-            <SimpleCard title="Doughnut Chart">
+            <SimpleCard title="Gráfico de anillos">
                 <DoughnutChart
                     height="350px"
                     color={[
@@ -30,7 +30,7 @@ const AppEchart = () => {
                 />
             </SimpleCard>
             <div className="py-3" />
-            <SimpleCard title="Line Chart">
+            <SimpleCard title="Gráfico lineal">
                 <LineChart
                     height="350px"
                     color={[
@@ -40,7 +40,7 @@ const AppEchart = () => {
                 />
             </SimpleCard>
             <div className="py-3" />
-            <SimpleCard title="Comparison Chart">
+            <SimpleCard title="Gráfico de comparaciòn">
                 <ComparisonChart
                     height="350px"
                     color={[
@@ -51,7 +51,7 @@ const AppEchart = () => {
                 />
             </SimpleCard>
             <div className="py-3" />
-            <SimpleCard title="Area Chart">
+            <SimpleCard title="Gráfico de Area">
                 <AreaChart
                     height="350px"
                     color={[theme.palette.primary.main]}
