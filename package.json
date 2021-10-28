@@ -21,6 +21,9 @@
     "date-fns": "^2.15.0",
     "echarts": "^4.8.0",
     "echarts-for-react": "^2.0.16",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-myconnection": "^1.0.4",
     "firebase": "^8.6.7",
     "formik": "^2.1.5",
     "globalize": "^0.1.1",
@@ -28,7 +31,9 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.0.0-beta.2",
     "lodash": "^4.17.19",
+    "morgan": "^1.10.0",
     "mui-datatables": "^3.2.0",
+    "mysql": "^2.18.1",
     "node-sass": "^4.14.1",
     "notistack": "^0.8.8",
     "prop-types": "^15.7.2",
@@ -65,7 +70,8 @@
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ghp": "react-scripts build && gh-pages -d build"
+    "ghp": "react-scripts build && gh-pages -d build",
+    "dev": "nodemon src/app.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -90,6 +96,7 @@
     "customize-cra": "^0.9.1",
     "eslint-plugin-react-hooks": "0.0.0-8d7535e54",
     "gh-pages": "3.2.3",
+    "nodemon": "^2.0.14",
     "react-app-rewired": "^2.1.6"
   }
 }

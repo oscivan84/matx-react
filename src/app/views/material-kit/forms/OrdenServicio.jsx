@@ -4,8 +4,8 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import ReactHtmlParser from 'react-html-parser'
 import { Autocomplete, createFilterOptions } from '@material-ui/lab'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
-
 import Highlight from 'react-highlight'
+
 import {
     Button,
     Icon,
@@ -27,6 +27,8 @@ import {
 } from '@material-ui/pickers'
 import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
+
+
 
 const suggestions = [
     { label: 'Producto 1' },
@@ -182,16 +184,19 @@ const OrdenServicio = () => {
 
                 <Grid item lg={12} md={6} sm={12} xs={12}>
                     <div className="m-sm-30">
+                        
                         <SimpleCard title="Pedido">
                             <Table>
                                 <TableHead>
                                     <TableRow className="bg-default">
                                         <TableCell className="px-0">
                                             Producto
+
                                         </TableCell>
                                         
                                         <TableCell className="px-0">
                                             Cantidad
+                                            
                                         </TableCell>
                                         <TableCell className="px-0">
                                             Precio
