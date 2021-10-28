@@ -1,3 +1,5 @@
+
+/*
 const controller = {};
 
 controller.list = (req, res) => {
@@ -59,3 +61,4 @@ controller.delete = (req, res) => {
 }
 
 module.exports = controller;
+*/
