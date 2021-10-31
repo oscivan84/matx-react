@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import {
     Grid,
     Divider,
@@ -10,11 +11,42 @@ import {
 } from '@material-ui/core'
 import { format } from 'date-fns'
 
+const baseurl = 'http://localhost:3200/2'
+const elementos=[
+    
+]
+
 const InvoiceOverview = () => {
+    const [data, setData] = useState([])
+   
+
+    const peticionGet = async () => {
+        await axios.get(baseurl).then((response) => {
+            //console.log(response.data)
+            elementos.push(response.data)
+            console.log(elementos[0])
+
+           // useState({ data: response.data })
+        })
+    }
+
+    useEffect(() => {
+        const usarPeticionGet = async () => {
+            await peticionGet()
+        }
+        usarPeticionGet()
+    }, [])
+
     return (
         <Card className="p-4">
             <div className="mb-4 flex justify-between items-center">
-                <h4 className="m-0 font-medium">Registro Orden</h4>
+                <h4 className="m-0 font-medium">{
+                elementos.map(registro=>{
+
+                console.log(registro.TipoMovimiento[0])}
+                )}
+                
+                Registro Orden</h4>
                 <div className="text-muted text-13 font-medium">
                     {format(new Date(), 'MMM dd, yyyy')}{' '}
                     {format(new Date(), 'HH:mm:aa')}
@@ -86,6 +118,7 @@ const InvoiceOverview = () => {
 
                     <Divider />
 
+                    {/* {dummyProductList.map((product) => ( */}
                     {dummyProductList.map((product) => (
                         <div key={product.id} className="py-4">
                             <Grid container alignItems="center">
