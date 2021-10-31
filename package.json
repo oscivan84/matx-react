@@ -71,7 +71,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "ghp": "react-scripts build && gh-pages -d build",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/Server/app.js"
   },
   "eslintConfig": {
     "extends": "react-app"
