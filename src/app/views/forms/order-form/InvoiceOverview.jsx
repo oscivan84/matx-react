@@ -12,21 +12,26 @@ import {
 import { format } from 'date-fns'
 
 const baseurl = 'http://localhost:3200/2'
-const elementos=[
-    
-]
 
 const InvoiceOverview = () => {
-    const [data, setData] = useState([])
-   
+    const [data, setData] = useState({})
 
     const peticionGet = async () => {
         await axios.get(baseurl).then((response) => {
-            //console.log(response.data)
-            elementos.push(response.data)
-            console.log(elementos[0])
+            console.log(response.data)
+            setData(response.data)
+        })
+    }
 
-           // useState({ data: response.data })
+    const peticionset = async () => {
+        await axios.set(baseurl).then((response) => {
+            
+            
+            
+            console.log(response.data)
+            setData(response.data)
+
+            
         })
     }
 
@@ -40,13 +45,8 @@ const InvoiceOverview = () => {
     return (
         <Card className="p-4">
             <div className="mb-4 flex justify-between items-center">
-                <h4 className="m-0 font-medium">{
-                elementos.map(registro=>{
-
-                console.log(registro.TipoMovimiento[0])}
-                )}
-                
-                Registro Orden</h4>
+                {data.Fecha}
+                <h4 className="m-0 font-medium">Registro Orden</h4>
                 <div className="text-muted text-13 font-medium">
                     {format(new Date(), 'MMM dd, yyyy')}{' '}
                     {format(new Date(), 'HH:mm:aa')}
