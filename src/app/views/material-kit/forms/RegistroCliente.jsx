@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import axios from "axios"
 import {
     Button,
     Icon,
     Grid,
-    Radio,
-    RadioGroup,
     FormControlLabel,
     Checkbox,
     TextField,
@@ -18,51 +17,64 @@ import {
 import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
 
+const baseurl = 'http://localhost:3200'
+
+const datosaGuardar={
+
+                "idalumno": 1,
+                "nombre": "juan",
+                "apellido": "sanchez",
+                "numerodocumento": "45895658",
+                "direccion": "cra 45 N 78-89",
+                "barrio": "San luis",
+                "telefonofijo": "2300048",
+                "telefonomovil": "3102568974",
+                "correoelectronico": "jusanchez@correo.com",
+                "idestadocivil": 1,
+                "contacto": "martha perez",
+                "idafiliacioneps": 1,
+                "pagos": 1,
+                "idestadoalumno": 1,
+                "afiliacioneps_idafiliacioneps": 1,
+                "estadocivil_idestadocivil": 1,
+                "nivelacademico_idnivelacademico": 1,
+                "documento_iddocumento": 1,
+                "pais_idpais": 1,
+                "ciudad_idciudad": 1
+    
+        
+        }
+
+
+
 const RegistroCliente = () => {
-    const [state, setState] = useState({
-        date: new Date(),
-    })
+    //const [state, setState] = useState({
+      //  date: new Date(),
+    //})
+
+    const [data, setData] = useState({})
+
+    const peticionGet = async () => {
+        await axios.get(baseurl).then((response) => {
+            console.log(response.data)
+            setData(response.data)
+        })
+    }
+
+    const peticionpost = async (e) => {
+        e.preventDefault();
+        await axios.post(baseurl, datosaGuardar).then((response) => {
+        })
+    }
 
     useEffect(() => {
-        ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
-            console.log(value)
+        const usarPeticionGet = async () => {
+            await peticionGet()
+        }
+        usarPeticionGet()
+    }, [])
 
-            if (value !== state.password) {
-                return false
-            }
-            return true
-        })
-        return () => ValidatorForm.removeValidationRule('isPasswordMatch')
-    }, [state.password])
-
-    const handleSubmit = (event) => {
-        // console.log("submitted");
-        // console.log(event);
-    }
-
-    const handleChange = (event) => {
-        event.persist()
-        setState({
-            ...state,
-            [event.target.name]: event.target.value,
-        })
-    }
-
-    const handleDateChange = (date) => {
-        setState({ ...state, date })
-    }
-
-    const {
-        username,
-        firstName,
-        creditCard,
-        mobile,
-        password,
-        confirmPassword,
-        gender,
-        date,
-        email,
-    } = state
+     
     const currencies = [
         {
             value: 'TI',
@@ -80,14 +92,15 @@ const RegistroCliente = () => {
 
     return (
         <div>
-            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+            <ValidatorForm  onError={() => null}>
                 <Grid container spacing={2}>
                     <Grid item lg={6} md={6} sm={6} xs={6}>
                         <TextField
                             className="mb-4 w-full"
                             variant="outlined"
+                            id="nombre"
                             name="nombre"
-                            label="Nombre"
+                            label="nombre"
                             size="normal"
                         />
 
@@ -95,13 +108,13 @@ const RegistroCliente = () => {
                             <KeyboardDatePicker
                                 className="mb-4 w-full"
                                 margin="none"
-                                id="mui-pickers-date"
+                                id="apellido"
                                 label="Fecha Nacimiento"
                                 inputVariant="standard"
                                 type="text"
                                 autoOk={true}
-                                value={date}
-                                onChange={handleDateChange}
+                                //value={}
+                                //onChange={}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
@@ -113,7 +126,7 @@ const RegistroCliente = () => {
                             select
                             label="Documento Identidad"
                             value="Seleccione"
-                            onChange={handleChange}
+                            //onChange={handleChange}
                         >
                             {currencies.map((option) => (
                                 <MenuItem
@@ -136,10 +149,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Telefono Fijo"
-                            onChange={handleChange}
+                            //onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                           // value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -149,10 +162,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Correo Electronico"
-                            onChange={handleChange}
+                            //onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                            //value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -162,10 +175,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Estado Civil"
-                            onChange={handleChange}
+                            //onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                            //value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -175,10 +188,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="EPS"
-                            onChange={handleChange}
+                           // onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                            //value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -221,10 +234,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Telefono Movil"
-                            onChange={handleChange}
+                            //onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                            //value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -234,10 +247,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Nivel Academico"
-                            onChange={handleChange}
+                            //onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                            //value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -247,10 +260,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Con quien Vive"
-                            onChange={handleChange}
+                           // onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                           // value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -260,10 +273,10 @@ const RegistroCliente = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Tipo Afiliado"
-                            onChange={handleChange}
+                            //onChange={handleChange}
                             name="confirmPassword"
                             type="firstName"
-                            value={confirmPassword || ''}
+                            //value={confirmPassword || ''}
                             validators={['isPasswordMatch']}
                             errorMessages={[
                                 'Campo Requerido',
@@ -282,7 +295,7 @@ const RegistroCliente = () => {
                     </Grid>
                 </Grid>
 
-                <Button color="primary" variant="contained" type="submit">
+                <Button color="primary" variant="contained" type="submit" onClick={peticionpost}>
                     <Icon>send</Icon>
                     <span className="pl-2 capitalize">Enviar</span>
                 </Button>

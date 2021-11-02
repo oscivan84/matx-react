@@ -1,0 +1,463 @@
+CREATE TABLE IF NOT EXISTS `profediana`.`sede` (
+  `idsede` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `clave` INT NULL,
+  PRIMARY KEY (`idsede`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`usuarios` (
+  `username` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NULL,
+  `password` VARCHAR(32) NOT NULL,
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `idempresa` INT NULL,
+  `idrol` INT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `apellido` VARCHAR(45) NULL,
+  `idusuarios` INT NOT NULL,
+  `sede_idsede` INT NOT NULL,
+  PRIMARY KEY (`idusuarios`),
+  INDEX `fk_usuarios_sede1_idx` (`sede_idsede` ASC) VISIBLE,
+  CONSTRAINT `fk_usuarios_sede1`
+    FOREIGN KEY (`sede_idsede`)
+    REFERENCES `profediana`.`sede` (`idsede`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`roles` (
+  `idroles` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  PRIMARY KEY (`idroles`),
+  CONSTRAINT `fk_roles_user`
+    FOREIGN KEY (`idroles`)
+    REFERENCES `profediana`.`usuarios` (`idrol`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`modulos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`modulos` (
+  `idmodulos` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `rutas` VARCHAR(45) NULL,
+  `roles_idroles` INT NOT NULL,
+  PRIMARY KEY (`idmodulos`, `roles_idroles`),
+  INDEX `fk_modulos_roles1_idx` (`roles_idroles` ASC) VISIBLE,
+  CONSTRAINT `fk_modulos_roles1`
+    FOREIGN KEY (`roles_idroles`)
+    REFERENCES `profediana`.`roles` (`idroles`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`afiliacioneps`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`afiliacioneps` (
+  `idafiliacioneps` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `codigo` INT NULL,
+  PRIMARY KEY (`idafiliacioneps`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`estadocivil`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`estadocivil` (
+  `idestadocivil` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `codigo` INT NULL,
+  PRIMARY KEY (`idestadocivil`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`nivelacademico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`nivelacademico` (
+  `idnivelacademico` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `codigo` INT NULL,
+  PRIMARY KEY (`idnivelacademico`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`documento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`documento` (
+  `iddocumento` INT NOT NULL,
+  `tipo` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `codigo` INT NULL,
+  PRIMARY KEY (`iddocumento`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`pais`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`pais` (
+  `idpais` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `codigo` INT NULL,
+  PRIMARY KEY (`idpais`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`ciudad`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`ciudad` (
+  `idciudad` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `codigo` INT NULL,
+  PRIMARY KEY (`idciudad`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`alumno`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`alumno` (
+  `idalumno` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `apellido` VARCHAR(45) NULL,
+  `numerodocumento` VARCHAR(45) NULL,
+  `direccion` VARCHAR(45) NULL,
+  `barrio` VARCHAR(45) NULL,
+  `telefonofijo` VARCHAR(45) NULL,
+  `telefonomovil` VARCHAR(45) NULL,
+  `correoelectronico` VARCHAR(45) NULL,
+  `idestadocivil` INT NULL,
+  `contacto` VARCHAR(45) NULL,
+  `idafiliacioneps` INT NULL,
+  `pagos` INT NULL,
+  `idestadoalumno` INT NULL,
+  `alumnocol` VARCHAR(45) NULL,
+  `afiliacioneps_idafiliacioneps` INT NOT NULL,
+  `estadocivil_idestadocivil` INT NOT NULL,
+  `nivelacademico_idnivelacademico` INT NOT NULL,
+  `documento_iddocumento` INT NOT NULL,
+  `pais_idpais` INT NOT NULL,
+  `ciudad_idciudad` INT NOT NULL,
+  PRIMARY KEY (`idalumno`),
+  INDEX `fk_alumno_afiliacioneps1_idx` (`afiliacioneps_idafiliacioneps` ASC) VISIBLE,
+  INDEX `fk_alumno_estadocivil1_idx` (`estadocivil_idestadocivil` ASC) VISIBLE,
+  INDEX `fk_alumno_nivelacademico1_idx` (`nivelacademico_idnivelacademico` ASC) VISIBLE,
+  INDEX `fk_alumno_documento1_idx` (`documento_iddocumento` ASC) VISIBLE,
+  INDEX `fk_alumno_pais1_idx` (`pais_idpais` ASC) VISIBLE,
+  INDEX `fk_alumno_ciudad1_idx` (`ciudad_idciudad` ASC) VISIBLE,
+  CONSTRAINT `fk_alumno_afiliacioneps1`
+    FOREIGN KEY (`afiliacioneps_idafiliacioneps`)
+    REFERENCES `profediana`.`afiliacioneps` (`idafiliacioneps`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_alumno_estadocivil1`
+    FOREIGN KEY (`estadocivil_idestadocivil`)
+    REFERENCES `profediana`.`estadocivil` (`idestadocivil`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_alumno_nivelacademico1`
+    FOREIGN KEY (`nivelacademico_idnivelacademico`)
+    REFERENCES `profediana`.`nivelacademico` (`idnivelacademico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_alumno_documento1`
+    FOREIGN KEY (`documento_iddocumento`)
+    REFERENCES `profediana`.`documento` (`iddocumento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_alumno_pais1`
+    FOREIGN KEY (`pais_idpais`)
+    REFERENCES `profediana`.`pais` (`idpais`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_alumno_ciudad1`
+    FOREIGN KEY (`ciudad_idciudad`)
+    REFERENCES `profediana`.`ciudad` (`idciudad`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`asistencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`asistencia` (
+  `idasistencia` INT NOT NULL,
+  `idalumno` INT NULL,
+  `idcurso` INT NULL,
+  `fecha` VARCHAR(45) NULL,
+  `idjustificacion` INT NULL,
+  `idpago` INT NULL,
+  `alumno_idalumno` INT NOT NULL,
+  `alumno_pais_idpais` INT NOT NULL,
+  PRIMARY KEY (`idasistencia`, `alumno_idalumno`, `alumno_pais_idpais`),
+  INDEX `fk_asistencia_alumno1_idx` (`alumno_idalumno` ASC, `alumno_pais_idpais` ASC) VISIBLE,
+  CONSTRAINT `fk_asistencia_alumno1`
+    FOREIGN KEY (`alumno_idalumno` , `alumno_pais_idpais`)
+    REFERENCES `profediana`.`alumno` (`idalumno` , `pais_idpais`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`justificacion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`justificacion` (
+  `idjustificacion` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `ruta` VARCHAR(45) NULL,
+  `asistencia_idasistencia` INT NOT NULL,
+  PRIMARY KEY (`idjustificacion`, `asistencia_idasistencia`),
+  INDEX `fk_justificacion_asistencia1_idx` (`asistencia_idasistencia` ASC) VISIBLE,
+  CONSTRAINT `fk_justificacion_asistencia1`
+    FOREIGN KEY (`asistencia_idasistencia`)
+    REFERENCES `profediana`.`asistencia` (`idasistencia`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`curso`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`curso` (
+  `idcurso` INT NOT NULL,
+  `clase` VARCHAR(45) NULL,
+  `tema` VARCHAR(45) NULL,
+  `fecha` VARCHAR(45) NULL,
+  `estadocurso` TINYINT NULL,
+  PRIMARY KEY (`idcurso`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`estadopagos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`estadopagos` (
+  `idestadopagos` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  PRIMARY KEY (`idestadopagos`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`pago`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`pago` (
+  `idpago` INT NOT NULL,
+  `fecha` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `idestadopago` INT NULL,
+  `cantidad` VARCHAR(45) NULL,
+  `idmovimientoproducto` INT NULL,
+  `idusuario` INT NULL,
+  `iadlumno` INT NULL,
+  `idestadoalumno` VARCHAR(45) NULL,
+  `estadopagos_idestadopagos` INT NOT NULL,
+  PRIMARY KEY (`idpago`),
+  INDEX `fk_pago_estadopagos1_idx` (`estadopagos_idestadopagos` ASC) VISIBLE,
+  CONSTRAINT `fk_pago_estadopagos1`
+    FOREIGN KEY (`estadopagos_idestadopagos`)
+    REFERENCES `profediana`.`estadopagos` (`idestadopagos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+COMMENT = '				';
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`estadoalumno`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`estadoalumno` (
+  `idestadoalumno` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `estadopagos_idestadopagos` INT NOT NULL,
+  PRIMARY KEY (`idestadoalumno`),
+  INDEX `fk_estadoalumno_estadopagos1_idx` (`estadopagos_idestadopagos` ASC) VISIBLE,
+  CONSTRAINT `fk_estadoalumno_estadopagos1`
+    FOREIGN KEY (`estadopagos_idestadopagos`)
+    REFERENCES `profediana`.`estadopagos` (`idestadopagos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`tipoproducto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`tipoproducto` (
+  `idtipoproducto` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  PRIMARY KEY (`idtipoproducto`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`producto` (
+  `idproducto` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `cantidad` VARCHAR(45) NULL,
+  `idtipoproducto` INT NULL,
+  `stock` VARCHAR(45) NULL,
+  `codigo` VARCHAR(45) NULL,
+  `rutaimagen` VARCHAR(45) NULL,
+  `precioventa` VARCHAR(45) NULL,
+  `productocol` VARCHAR(45) NULL,
+  `tipoproducto_idtipoproducto` INT NOT NULL,
+  PRIMARY KEY (`idproducto`),
+  INDEX `fk_producto_tipoproducto1_idx` (`tipoproducto_idtipoproducto` ASC) VISIBLE,
+  CONSTRAINT `fk_producto_tipoproducto1`
+    FOREIGN KEY (`tipoproducto_idtipoproducto`)
+    REFERENCES `profediana`.`tipoproducto` (`idtipoproducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`tipomovimiento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`tipomovimiento` (
+  `idtipomovimiento` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `codigo` INT NULL,
+  PRIMARY KEY (`idtipomovimiento`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`movimientoproducto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`movimientoproducto` (
+  `idmovimientoproducto` INT NOT NULL,
+  `idproducto` INT NULL,
+  `cantidad` VARCHAR(45) NULL,
+  `idpago` INT NULL,
+  `tipomovimiento_idtipomovimiento` INT NOT NULL,
+  `usuarios_idusuarios` INT NOT NULL,
+  `estadopagos_idestadopagos` INT NOT NULL,
+  PRIMARY KEY (`idmovimientoproducto`),
+  INDEX `fk_movimientoproducto_tipomovimiento1_idx` (`tipomovimiento_idtipomovimiento` ASC) VISIBLE,
+  INDEX `fk_movimientoproducto_usuarios1_idx` (`usuarios_idusuarios` ASC) VISIBLE,
+  INDEX `fk_movimientoproducto_estadopagos1_idx` (`estadopagos_idestadopagos` ASC) VISIBLE,
+  CONSTRAINT `fk_movimientoproducto_tipomovimiento1`
+    FOREIGN KEY (`tipomovimiento_idtipomovimiento`)
+    REFERENCES `profediana`.`tipomovimiento` (`idtipomovimiento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_movimientoproducto_usuarios1`
+    FOREIGN KEY (`usuarios_idusuarios`)
+    REFERENCES `profediana`.`usuarios` (`idusuarios`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_movimientoproducto_estadopagos1`
+    FOREIGN KEY (`estadopagos_idestadopagos`)
+    REFERENCES `profediana`.`estadopagos` (`idestadopagos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`asistencia_has_curso`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`asistencia_has_curso` (
+  `asistencia_idasistencia` INT NOT NULL,
+  `curso_idcurso` INT NOT NULL,
+  PRIMARY KEY (`asistencia_idasistencia`, `curso_idcurso`),
+  INDEX `fk_asistencia_has_curso_curso1_idx` (`curso_idcurso` ASC) VISIBLE,
+  INDEX `fk_asistencia_has_curso_asistencia1_idx` (`asistencia_idasistencia` ASC) VISIBLE,
+  CONSTRAINT `fk_asistencia_has_curso_asistencia1`
+    FOREIGN KEY (`asistencia_idasistencia`)
+    REFERENCES `profediana`.`asistencia` (`idasistencia`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_asistencia_has_curso_curso1`
+    FOREIGN KEY (`curso_idcurso`)
+    REFERENCES `profediana`.`curso` (`idcurso`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`producto_has_movimientoproducto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`producto_has_movimientoproducto` (
+  `producto_idproducto` INT NOT NULL,
+  `movimientoproducto_idmovimientoproducto` INT NOT NULL,
+  PRIMARY KEY (`producto_idproducto`, `movimientoproducto_idmovimientoproducto`),
+  INDEX `fk_producto_has_movimientoproducto_movimientoproducto1_idx` (`movimientoproducto_idmovimientoproducto` ASC) VISIBLE,
+  INDEX `fk_producto_has_movimientoproducto_producto1_idx` (`producto_idproducto` ASC) VISIBLE,
+  CONSTRAINT `fk_producto_has_movimientoproducto_producto1`
+    FOREIGN KEY (`producto_idproducto`)
+    REFERENCES `profediana`.`producto` (`idproducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_producto_has_movimientoproducto_movimientoproducto1`
+    FOREIGN KEY (`movimientoproducto_idmovimientoproducto`)
+    REFERENCES `profediana`.`movimientoproducto` (`idmovimientoproducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `profediana`.`producto_has_movimientoproducto_has_pago`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `profediana`.`producto_has_movimientoproducto_has_pago` (
+  `producto_has_movimientoproducto_producto_idproducto` INT NOT NULL,
+  `producto_has_movimientoproducto_movimientoproducto_idmovimientoproducto` INT NOT NULL,
+  `pago_idpago` INT NOT NULL,
+  PRIMARY KEY (`producto_has_movimientoproducto_producto_idproducto`, `producto_has_movimientoproducto_movimientoproducto_idmovimientoproducto`, `pago_idpago`),
+  INDEX `fk_producto_has_movimientoproducto_has_pago_pago1_idx` (`pago_idpago` ASC) VISIBLE,
+  INDEX `fk_producto_has_movimientoproducto_has_pago_producto_has_mo_idx` (`producto_has_movimientoproducto_producto_idproducto` ASC, `producto_has_movimientoproducto_movimientoproducto_idmovimientoproducto` ASC) VISIBLE,
+  CONSTRAINT `fk_producto_has_movimientoproducto_has_pago_producto_has_movi1`
+    FOREIGN KEY (`producto_has_movimientoproducto_producto_idproducto` , `producto_has_movimientoproducto_movimientoproducto_idmovimientoproducto`)
+    REFERENCES `profediana`.`producto_has_movimientoproducto` (`producto_idproducto` , `movimientoproducto_idmovimientoproducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_producto_has_movimientoproducto_has_pago_pago1`
+    FOREIGN KEY (`pago_idpago`)
+    REFERENCES `profediana`.`pago` (`idpago`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

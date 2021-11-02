@@ -1,10 +1,9 @@
 
-/*
 const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM movimientomercancia', (err, movimientos) => {
+    conn.query('SELECT * FROM alumno', (err, movimientos) => {
      if (err) {
       res.json(err);
      }
@@ -18,6 +17,7 @@ controller.list = (req, res) => {
   });
 };
 
+/*
 controller.save = (req, res) => {
   const data = req.body;
   console.log(req.body)

@@ -11,7 +11,34 @@ import {
 } from '@material-ui/core'
 import { format } from 'date-fns'
 
-const baseurl = 'http://localhost:3200/2'
+const baseurl = 'http://localhost:3200/1'
+
+const datosaGuardar={
+
+                "idalumno": 1,
+                "nombre": "juan",
+                "apellido": "sanchez",
+                "numerodocumento": "45895658",
+                "direccion": "cra 45 N 78-89",
+                "barrio": "San luis",
+                "telefonofijo": "2300048",
+                "telefonomovil": "3102568974",
+                "correoelectronico": "jusanchez@correo.com",
+                "idestadocivil": 1,
+                "contacto": "martha perez",
+                "idafiliacioneps": 1,
+                "pagos": 1,
+                "idestadoalumno": 1,
+                "afiliacioneps_idafiliacioneps": 1,
+                "estadocivil_idestadocivil": 1,
+                "nivelacademico_idnivelacademico": 1,
+                "documento_iddocumento": 1,
+                "pais_idpais": 1,
+                "ciudad_idciudad": 1
+    
+        
+        }
+
 
 const InvoiceOverview = () => {
     const [data, setData] = useState({})
@@ -23,15 +50,8 @@ const InvoiceOverview = () => {
         })
     }
 
-    const peticionset = async () => {
-        await axios.set(baseurl).then((response) => {
-            
-            
-            
-            console.log(response.data)
-            setData(response.data)
-
-            
+    const peticionpost = async () => {
+        await axios.post(baseurl, datosaGuardar).then((response) => {
         })
     }
 
@@ -46,7 +66,7 @@ const InvoiceOverview = () => {
         <Card className="p-4">
             <div className="mb-4 flex justify-between items-center">
                 {data.Fecha}
-                <h4 className="m-0 font-medium">Registro Orden</h4>
+                <h4 className="m-0 font-medium">Registro Orden - {data.telefonofijo}</h4>
                 <div className="text-muted text-13 font-medium">
                     {format(new Date(), 'MMM dd, yyyy')}{' '}
                     {format(new Date(), 'HH:mm:aa')}

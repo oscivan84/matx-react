@@ -5,12 +5,12 @@ const mysqlConnection = require('../database.js')
 
 router.get('/', (req, res) => {
     mysqlConnection.query(
-        'SELECT * FROM movimientomercancia',
+        'SELECT * FROM alumno',
         (err, row, fields) => {
             if (err) {
                 res.json(err)
             } else {
-                console.log(row)
+                res.json(row[0]);
             }
         }
     );
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 // GET An Employee
 router.get('/:id', (req, res) => {
     const { id } = req.params; 
-    mysqlConnection.query('SELECT * FROM movimientomercancia WHERE idmovimiento = ?', [id], (err, rows, fields) => {
+    mysqlConnection.query('SELECT * FROM alumno WHERE idalumno = ?', [id], (err, rows, fields) => {
       if (!err) {
         
         res.json(rows[0]);
